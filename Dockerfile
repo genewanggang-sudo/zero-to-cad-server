@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.4.1-runtime-ubuntu22.04
+FROM pytorch/pytorch:2.7.1-cuda12.8-cudnn9-runtime AS base
 
 ENV DEBIAN_FRONTEND=noninteractive \
     HF_HOME=/app/hf-cache \
@@ -13,10 +13,7 @@ RUN apt-get update && \
         git \
         libgl1 \
         libglib2.0-0 \
-        libxrender1 \
-        python3 \
-        python3-pip \
-        python3-venv && \
+        libxrender1 && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
@@ -24,8 +21,21 @@ WORKDIR /app
 COPY pyproject.toml README.md /app/
 COPY src /app/src
 
-RUN python3 -m pip install --upgrade pip && \
-    python3 -m pip install .
+FROM base AS dev
+
+COPY tests /app/tests
+
+RUN python -m pip install --upgrade pip && \
+    python -m pip install ".[dev]"
+
+EXPOSE 8000
+
+CMD ["uvicorn", "zero_to_cad_server.main:app", "--host", "0.0.0.0", "--port", "8000"]
+
+FROM base AS production
+
+RUN python -m pip install --upgrade pip && \
+    python -m pip install .
 
 EXPOSE 8000
 

@@ -6,6 +6,7 @@ __pycache__/
 data/
 hf-cache/
 outputs/
+.tmp/
 .git/
 .pytest_cache/
 .ruff_cache/

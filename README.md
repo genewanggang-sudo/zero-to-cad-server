@@ -39,6 +39,13 @@ Run the service:
 uvicorn zero_to_cad_server.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
+Run local checks after installing the development dependencies:
+
+```powershell
+python -m pip install -e ".[dev]"
+.\scripts\check.ps1
+```
+
 Submit a job:
 
 ```powershell
@@ -59,6 +66,12 @@ Build and run with Docker Compose:
 
 ```powershell
 docker compose up --build
+```
+
+Run checks inside the Docker development image:
+
+```powershell
+.\scripts\check-container.ps1
 ```
 
 Or build and run directly:
@@ -83,6 +96,12 @@ Environment variables:
 - `ZERO_TO_CAD_DATA_DIR`: service data directory, default `data`
 - `ZERO_TO_CAD_MAX_NEW_TOKENS`: generation length, default `4096`
 - `ZERO_TO_CAD_EXPORT_TIMEOUT_SECONDS`: CadQuery export timeout, default `120`
+
+Copy `.env.example` when you need a local environment file:
+
+```powershell
+Copy-Item .env.example .env
+```
 
 ## Operational Notes
 

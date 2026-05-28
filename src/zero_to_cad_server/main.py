@@ -1,8 +1,9 @@
 from __future__ import annotations
 
-import tempfile
 import shutil
+import tempfile
 from pathlib import Path
+from typing import Annotated
 
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.responses import FileResponse
@@ -35,8 +36,8 @@ def health() -> dict[str, str]:
 
 @app.post("/v1/jobs", response_model=JobAccepted, status_code=202)
 async def create_job(
-    images: list[UploadFile] = File(...),
-    formats: list[str] | None = Form(default=None),
+    images: Annotated[list[UploadFile], File()],
+    formats: Annotated[list[str] | None, Form()] = None,
 ) -> JobAccepted:
     if len(images) != 8:
         raise HTTPException(status_code=400, detail="Exactly 8 images are required.")
