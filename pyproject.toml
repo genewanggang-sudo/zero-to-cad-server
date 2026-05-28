@@ -1,0 +1,30 @@
+[project]
+name = "zero-to-cad-server"
+version = "0.1.0"
+description = "HTTP service for Zero-to-CAD inference and CadQuery export."
+requires-python = ">=3.11"
+dependencies = [
+    "accelerate",
+    "cadquery",
+    "fastapi",
+    "pillow",
+    "pydantic>=2",
+    "python-multipart",
+    "safetensors",
+    "torch",
+    "transformers",
+    "uvicorn[standard]",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "httpx",
+]
+
+[project.scripts]
+zero-to-cad-service = "zero_to_cad_runtime.main:run"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

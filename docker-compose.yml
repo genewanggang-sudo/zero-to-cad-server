@@ -1,0 +1,20 @@
+services:
+  zero-to-cad:
+    build: .
+    image: zero-to-cad-server:service
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+      - ./hf-cache:/app/hf-cache
+    environment:
+      ZERO_TO_CAD_MODEL_ID: ADSKAILab/Zero-To-CAD-Qwen3-VL-2B
+      ZERO_TO_CAD_DATA_DIR: /app/data
+      ZERO_TO_CAD_MAX_NEW_TOKENS: "4096"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
