@@ -19,7 +19,7 @@ def export_cadquery_code(
     command = [
         sys.executable,
         "-m",
-        "zero_to_cad_runtime.export_runner",
+        "zero_to_cad_server.export_runner",
         str(generated_path),
         str(output_dir),
         json.dumps(formats),

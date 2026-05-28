@@ -23,7 +23,7 @@ dev = [
 ]
 
 [project.scripts]
-zero-to-cad-service = "zero_to_cad_runtime.main:run"
+zero-to-cad-server = "zero_to_cad_server.main:run"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

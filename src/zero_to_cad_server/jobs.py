@@ -8,9 +8,9 @@ from pathlib import Path
 
 from PIL import Image
 
-from zero_to_cad_runtime.exporter import export_cadquery_code
-from zero_to_cad_runtime.model import ZeroToCadModel
-from zero_to_cad_runtime.schemas import JobStatus
+from zero_to_cad_server.exporter import export_cadquery_code
+from zero_to_cad_server.model import ZeroToCadModel
+from zero_to_cad_server.schemas import JobStatus
 
 
 class JobManager:

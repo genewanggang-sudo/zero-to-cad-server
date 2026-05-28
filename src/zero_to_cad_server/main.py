@@ -7,10 +7,10 @@ from pathlib import Path
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.responses import FileResponse
 
-from zero_to_cad_runtime.config import load_settings
-from zero_to_cad_runtime.jobs import JobManager
-from zero_to_cad_runtime.model import ModelConfig, ZeroToCadModel
-from zero_to_cad_runtime.schemas import JobAccepted, JobStatus
+from zero_to_cad_server.config import load_settings
+from zero_to_cad_server.jobs import JobManager
+from zero_to_cad_server.model import ModelConfig, ZeroToCadModel
+from zero_to_cad_server.schemas import JobAccepted, JobStatus
 
 settings = load_settings()
 model = ZeroToCadModel(
@@ -25,7 +25,7 @@ jobs = JobManager(
     export_timeout_seconds=settings.export_timeout_seconds,
 )
 
-app = FastAPI(title="Zero-to-CAD Runtime", version="0.1.0")
+app = FastAPI(title="Zero-to-CAD Server", version="0.1.0")
 
 
 @app.get("/health")

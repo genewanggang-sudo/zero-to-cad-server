@@ -1,6 +1,6 @@
 # zero-to-cad-server
 
-Zero-to-CAD Runtime is a deployable HTTP service that accepts eight rendered
+Zero-to-CAD Server is a deployable HTTP service that accepts eight rendered
 views of a CAD object, runs the Zero-to-CAD model, generates CadQuery code, and
 exports CAD artifacts such as STEP and STL.
 
@@ -36,7 +36,7 @@ python -m pip install -e .
 Run the service:
 
 ```powershell
-uvicorn zero_to_cad_runtime.main:app --reload --host 0.0.0.0 --port 8000
+uvicorn zero_to_cad_server.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
 Submit a job:
