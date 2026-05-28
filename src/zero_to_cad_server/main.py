@@ -25,6 +25,7 @@ jobs = JobManager(
     model=model,
     export_timeout_seconds=settings.export_timeout_seconds,
 )
+settings.tmp_dir.mkdir(parents=True, exist_ok=True)
 
 app = FastAPI(title="Zero-to-CAD Server", version="0.1.0")
 
@@ -48,7 +49,7 @@ async def create_job(
     if unsupported:
         raise HTTPException(status_code=400, detail=f"Unsupported export formats: {unsupported}")
 
-    temp_dir = Path(tempfile.mkdtemp(prefix="zero-to-cad-upload-"))
+    temp_dir = Path(tempfile.mkdtemp(prefix="zero-to-cad-upload-", dir=settings.tmp_dir))
     image_paths: list[Path] = []
     try:
         for index, upload in enumerate(images):

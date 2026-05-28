@@ -94,6 +94,7 @@ Environment variables:
 
 - `ZERO_TO_CAD_MODEL_ID`: model id, default `ADSKAILab/Zero-To-CAD-Qwen3-VL-2B`
 - `ZERO_TO_CAD_DATA_DIR`: service data directory, default `data`
+- `ZERO_TO_CAD_TMP_DIR`: upload temp directory, default `data/tmp`
 - `ZERO_TO_CAD_MAX_NEW_TOKENS`: generation length, default `4096`
 - `ZERO_TO_CAD_EXPORT_TIMEOUT_SECONDS`: CadQuery export timeout, default `120`
 

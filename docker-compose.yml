@@ -10,6 +10,7 @@ services:
     environment:
       ZERO_TO_CAD_MODEL_ID: ADSKAILab/Zero-To-CAD-Qwen3-VL-2B
       ZERO_TO_CAD_DATA_DIR: /app/data
+      ZERO_TO_CAD_TMP_DIR: /app/data/tmp
       ZERO_TO_CAD_MAX_NEW_TOKENS: "4096"
     deploy:
       resources:
